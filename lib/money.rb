@@ -1,9 +1,10 @@
 module MoneyExample
   class Money
-    attr_reader :amount
+    attr_reader :amount, :currency
 
-    def initialize(amount)
+    def initialize(amount, currency)
       @amount = amount
+      @currency = currency
     end
 
     def equals?(another)
@@ -11,11 +12,11 @@ module MoneyExample
     end
 
     def self.dollar(amount)
-      Dollar.new(amount)
+      Dollar.new(amount, "USD")
     end
 
     def self.swiss_franc(amount)
-      SwissFranc.new(amount)
+      SwissFranc.new(amount, "CHF")
     end
   end
 end

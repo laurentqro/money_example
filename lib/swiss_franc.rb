@@ -1,11 +1,7 @@
 module MoneyExample
   class SwissFranc < Money
     def times(multiplier)
-      SwissFranc.new(amount * multiplier)
-    end
-
-    def currency
-      "CHF"
+      MoneyExample::Money.swiss_franc(amount * multiplier)
     end
   end
 end
