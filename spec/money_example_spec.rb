@@ -2,11 +2,8 @@ RSpec.describe MoneyExample do
   it "multiplies" do
     five = MoneyExample::Dollar.new(5)
 
-    product = five.times(2)
-    expect(product.amount).to eql 10
-
-    product = five.times(3)
-    expect(product.amount).to eql 15
+    expect(MoneyExample::Dollar.new(10).equals?(five.times(2))).to be true
+    expect(MoneyExample::Dollar.new(15).equals?(five.times(3))).to be true
   end
 
   it "is equal" do
