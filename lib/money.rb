@@ -7,7 +7,7 @@ module MoneyExample
     end
 
     def equals?(another)
-      amount == another.amount
+      (self.amount == another.amount) && (self.class == another.class)
     end
   end
 end

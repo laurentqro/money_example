@@ -20,4 +20,8 @@ RSpec.describe MoneyExample do
     expect(MoneyExample::SwissFranc.new(5).equals?(MoneyExample::SwissFranc.new(5))).to be true
     expect(MoneyExample::SwissFranc.new(6).equals?(MoneyExample::SwissFranc.new(5))).to be false
   end
+
+  it "compares across currencies" do
+    expect(MoneyExample::SwissFranc.new(6).equals?(MoneyExample::Dollar.new(6))).to be false
+  end
 end
