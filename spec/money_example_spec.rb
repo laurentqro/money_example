@@ -24,4 +24,9 @@ RSpec.describe MoneyExample do
   it "compares across currencies" do
     expect(MoneyExample::Money.swiss_franc(6).equals?(MoneyExample::Money.dollar(6))).to be false
   end
+
+  it "has a currency" do
+    expect(MoneyExample::Money.dollar(1).currency).to eql "USD"
+    expect(MoneyExample::Money.swiss_franc(1).currency).to eql "CHF"
+  end
 end

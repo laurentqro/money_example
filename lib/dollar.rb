@@ -5,5 +5,9 @@ module MoneyExample
     def times(multiplier)
       Dollar.new(amount * multiplier)
     end
+
+    def currency
+      "USD"
+    end
   end
 end
