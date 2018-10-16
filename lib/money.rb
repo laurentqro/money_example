@@ -8,15 +8,19 @@ module MoneyExample
     end
 
     def equals?(another)
-      (self.amount == another.amount) && (self.class == another.class)
+      (self.amount == another.amount) && self.currency == (another.currency)
+    end
+
+    def times(multiplier)
+      MoneyExample::Money.new(amount * multiplier, currency)
     end
 
     def self.dollar(amount)
-      Dollar.new(amount, "USD")
+      MoneyExample::Money.new(amount, "USD")
     end
 
     def self.swiss_franc(amount)
-      SwissFranc.new(amount, "CHF")
+      MoneyExample::Money.new(amount, "CHF")
     end
   end
 end

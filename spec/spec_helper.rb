@@ -1,7 +1,4 @@
 require "bundler/setup"
-require "money_example"
-require "dollar"
-require "swiss_franc"
 require "money"
 
 RSpec.configure do |config|
