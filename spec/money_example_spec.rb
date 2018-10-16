@@ -15,4 +15,9 @@ RSpec.describe MoneyExample do
     five = MoneyExample::SwissFranc.new(5)
     expect(MoneyExample::SwissFranc.new(10).equals?(five.times(2))).to be true
   end
+
+  it "compares Swiss Francs" do
+    expect(MoneyExample::SwissFranc.new(5).equals?(MoneyExample::SwissFranc.new(5))).to be true
+    expect(MoneyExample::SwissFranc.new(6).equals?(MoneyExample::SwissFranc.new(5))).to be false
+  end
 end
