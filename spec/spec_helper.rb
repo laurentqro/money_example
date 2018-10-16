@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "money_example"
 require "dollar"
+require "swiss_franc"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
