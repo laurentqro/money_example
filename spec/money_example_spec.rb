@@ -1,9 +1,8 @@
 RSpec.describe MoneyExample do
-  it "has a version number" do
-    expect(MoneyExample::VERSION).not_to be nil
-  end
+  it "multiplies" do
+    five = MoneyExample::Dollar.new(5)
+    five.times(2)
 
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(five.amount).to eql 10
   end
 end

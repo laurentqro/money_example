@@ -1,5 +1,5 @@
 require "money_example/version"
+require "dollar"
 
 module MoneyExample
-  # Your code goes here...
 end
