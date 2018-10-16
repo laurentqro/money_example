@@ -9,5 +9,9 @@ module MoneyExample
     def times(multiplier)
       Dollar.new(amount * multiplier)
     end
+
+    def equals?(another)
+      amount == another.amount
+    end
   end
 end

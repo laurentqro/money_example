@@ -8,4 +8,9 @@ RSpec.describe MoneyExample do
     product = five.times(3)
     expect(product.amount).to eql 15
   end
+
+  it "is equal" do
+    expect(MoneyExample::Dollar.new(5).equals?(MoneyExample::Dollar.new(5))).to be true
+    expect(MoneyExample::Dollar.new(6).equals?(MoneyExample::Dollar.new(5))).to be false
+  end
 end
