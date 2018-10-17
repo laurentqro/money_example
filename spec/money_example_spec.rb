@@ -81,5 +81,17 @@ RSpec.describe MoneyExample do
         expect(result.equals?(MoneyExample::Money.dollar(15))).to be true
       end
     end
+
+    describe "#times" do
+      it "multiplies sums" do
+        five_dollars = MoneyExample::Money.dollar(5)
+        ten_swiss = MoneyExample::Money.swiss_franc(10)
+        bank = MoneyExample::Bank.new
+        sum = MoneyExample::Sum.new(five_dollars, ten_swiss).times(2)
+        result = bank.reduce(sum, "USD")
+
+        expect(result.equals?(MoneyExample::Money.dollar(20))).to be true
+      end
+    end
   end
 end

@@ -15,5 +15,9 @@ module MoneyExample
     def plus(addend)
       MoneyExample::Sum.new(self, addend)
     end
+
+    def times(multiplier)
+      MoneyExample::Sum.new(augend.times(multiplier), addend.times(multiplier))
+    end
   end
 end
