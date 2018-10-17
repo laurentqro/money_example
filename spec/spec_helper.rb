@@ -2,7 +2,6 @@ require "bundler/setup"
 require "money_example/money"
 require "money_example/bank"
 require "money_example/sum"
-require "money_example/expression"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

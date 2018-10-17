@@ -45,5 +45,12 @@ RSpec.describe MoneyExample do
       result = bank.reduce(MoneyExample::Money.dollar(1), "USD")
       expect(result.equals?(MoneyExample::Money.dollar(1)))
     end
+
+    it "reduces moneys from different currencies" do
+      bank = MoneyExample::Bank.new
+      result = bank.reduce(MoneyExample::Money.swiss_franc(2), "USD")
+
+      expect(result.equals?(MoneyExample::Money.new(1, "USD"))).to be true
+    end
   end
 end

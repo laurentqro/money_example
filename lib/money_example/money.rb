@@ -1,9 +1,5 @@
-require "money_example/expression"
-
 module MoneyExample
   class Money
-    include MoneyExample::Expression
-
     attr_reader :amount, :currency
 
     def initialize(amount, currency)
@@ -29,6 +25,11 @@ module MoneyExample
 
     def plus(addendum)
       MoneyExample::Money.new(self.amount + addendum.amount, self.currency)
+    end
+
+    def reduce(bank, target_currency)
+      rate = bank.rate(self.currency, target_currency)
+      MoneyExample::Money.new(amount / rate, target_currency)
     end
   end
 end
