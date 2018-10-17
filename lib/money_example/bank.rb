@@ -4,8 +4,15 @@ module MoneyExample
       source.reduce(self, target)
     end
 
-    def rate(source_currency, target_currency)
-      source_currency == "CHF" && target_currency == "USD" ? 2 : 1
+    def rate(source, target)
+      return 1 if source == target
+
+      pair = Pair.new(source, target).name
+      RATES[pair]
     end
+
+    RATES = {
+      "CHF/USD" => 2
+    }
   end
 end
