@@ -1,5 +1,9 @@
+require "money_example/expression"
+
 module MoneyExample
   class Money
+    include MoneyExample::Expression
+
     attr_reader :amount, :currency
 
     def initialize(amount, currency)

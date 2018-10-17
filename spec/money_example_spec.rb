@@ -39,5 +39,11 @@ RSpec.describe MoneyExample do
 
       expect(result.equals?(MoneyExample::Money.dollar(8))).to be true
     end
+
+    it "reduces money" do
+      bank = MoneyExample::Bank.new
+      result = bank.reduce(MoneyExample::Money.dollar(1), "USD")
+      expect(result.equals?(MoneyExample::Money.dollar(1)))
+    end
   end
 end
