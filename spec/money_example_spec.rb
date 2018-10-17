@@ -23,9 +23,23 @@ RSpec.describe MoneyExample do
   end
 
   describe "Money#plus" do
-    it "adds two currencies" do
+    it "adds two moneys" do
       five = MoneyExample::Money.dollar(5)
-      expect(five.plus(five).equals?(MoneyExample::Money.dollar(10)))
+      sum = five.plus(five)
+      bank = MoneyExample::Bank.new
+      result = bank.reduce(sum, "USD")
+
+      expect(result.equals?(MoneyExample::Money.dollar(10)))
+    end
+
+    it "adds money from two different currencies" do
+      five_dollars = MoneyExample::Money.dollar(5)
+      ten_swiss = MoneyExample::Money.swiss_franc(10)
+      bank = MoneyExample::Bank.new
+      sum = five_dollars.plus(ten_swiss)
+      result = bank.reduce(sum, "USD")
+
+      expect(result.equals?(MoneyExample::Money.dollar(10))).to be true
     end
   end
 
@@ -33,7 +47,7 @@ RSpec.describe MoneyExample do
     it "reduces a sum expression" do
       five = MoneyExample::Money.dollar(5)
       three = MoneyExample::Money.dollar(3)
-      sum = MoneyExample::Sum.new(five, three)
+      sum = five.plus(three)
       bank = MoneyExample::Bank.new
       result = bank.reduce(sum, "USD")
 
@@ -43,6 +57,7 @@ RSpec.describe MoneyExample do
     it "reduces money" do
       bank = MoneyExample::Bank.new
       result = bank.reduce(MoneyExample::Money.dollar(1), "USD")
+
       expect(result.equals?(MoneyExample::Money.dollar(1)))
     end
 
@@ -51,6 +66,20 @@ RSpec.describe MoneyExample do
       result = bank.reduce(MoneyExample::Money.swiss_franc(2), "USD")
 
       expect(result.equals?(MoneyExample::Money.new(1, "USD"))).to be true
+    end
+  end
+
+  describe "Sum" do
+    describe "#plus" do
+      it "adds sums" do
+        five_dollars = MoneyExample::Money.dollar(5)
+        ten_swiss = MoneyExample::Money.swiss_franc(10)
+        bank = MoneyExample::Bank.new
+        sum = MoneyExample::Sum.new(five_dollars, ten_swiss).plus(five_dollars)
+        result = bank.reduce(sum, "USD")
+
+        expect(result.equals?(MoneyExample::Money.dollar(15))).to be true
+      end
     end
   end
 end

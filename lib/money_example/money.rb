@@ -24,12 +24,16 @@ module MoneyExample
     end
 
     def plus(addend)
-      MoneyExample::Money.new(self.amount + addend.amount, self.currency)
+      MoneyExample::Sum.new(self, addend)
     end
 
     def reduce(bank, target_currency)
       rate = bank.rate(self.currency, target_currency)
       MoneyExample::Money.new(amount / rate, target_currency)
+    end
+
+    def to_s
+      "#{amount}, #{currency}"
     end
   end
 end

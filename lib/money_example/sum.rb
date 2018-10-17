@@ -8,7 +8,12 @@ module MoneyExample
     end
 
     def reduce(bank, target_currency)
-      MoneyExample::Money.new(augend.amount + addend.amount, target_currency)
+      amount = augend.reduce(bank, target_currency).amount + addend.reduce(bank, target_currency).amount
+      MoneyExample::Money.new(amount, target_currency)
+    end
+
+    def plus(addend)
+      MoneyExample::Sum.new(self, addend)
     end
   end
 end
