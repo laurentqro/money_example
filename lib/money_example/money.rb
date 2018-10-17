@@ -22,5 +22,9 @@ module MoneyExample
     def self.swiss_franc(amount)
       MoneyExample::Money.new(amount, "CHF")
     end
+
+    def plus(addendum)
+      MoneyExample::Money.new(self.amount + addendum.amount, self.currency)
+    end
   end
 end
