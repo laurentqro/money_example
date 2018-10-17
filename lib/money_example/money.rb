@@ -23,8 +23,8 @@ module MoneyExample
       MoneyExample::Money.new(amount, "CHF")
     end
 
-    def plus(addendum)
-      MoneyExample::Money.new(self.amount + addendum.amount, self.currency)
+    def plus(addend)
+      MoneyExample::Money.new(self.amount + addend.amount, self.currency)
     end
 
     def reduce(bank, target_currency)
